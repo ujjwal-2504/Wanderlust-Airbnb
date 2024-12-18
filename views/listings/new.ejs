@@ -1,0 +1,115 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row">
+  <div class="col-8 offset-2 mt-4">
+    <h3 class="mb-4">Create a new list</h3>
+
+    <form
+      method="POST"
+      action="/listings"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title: </label>
+        <input
+          name="listing[title]"
+          id="title"
+          type="text"
+          placeholder="Add a catchy title"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Enter Title</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description: </label>
+        <textarea
+          name="listing[description]"
+          id="description"
+          placeholder=""
+          class="form-control"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Enter a good discription.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="imgFile" class="form-label">Upload Listing Image: </label>
+        <input
+          name="listing[image][url]"
+          type="file"
+          id="imgFile"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price: </label>
+          <input
+            name="listing[price]"
+            id="price"
+            type="number"
+            placeholder="1200"
+            class="form-control"
+            min="500"
+            max="100000"
+            required
+          />
+          <div class="invalid-feedback">Enter Price between 500 to 100000</div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label">Country: </label>
+          <input
+            name="listing[country]"
+            type="text"
+            id="country"
+            placeholder="India"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Country should be valid</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location: </label>
+        <input
+          name="listing[location]"
+          type="text"
+          id="location"
+          placeholder="Ranchi, Jharkhand"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Location should be valid</div>
+      </div>
+
+      <div class="dropdown mb-3">
+        <label for="category">Select a category: </label>
+        <select name="listing[category]" id="category" class="custom-select">
+          <option value="room" selected>Room</option>
+          <option value="mountains">Mountains</option>
+          <option value="pool">Pool</option>
+          <option value="city">City</option>
+          <option value="mansion">Mansion</option>
+          <option value="cabin">Cabin</option>
+          <option value="treeHouse">Tree house</option>
+          <option value="castle">Castle</option>
+          <option value="camp">Camp</option>
+          <option value="farm">Farm</option>
+          <option value="beach">Beach</option>
+          <option value="arctic">Arctic</option>
+          <option value="island">Island</option>
+        </select>
+      </div>
+
+      <button class="btn add-btn mb-5">Add</button>
+    </form>
+  </div>
+</div>
