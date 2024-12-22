@@ -40,7 +40,11 @@ module.exports.filterCategory = async (req, res) => {
 
   let filteredListings = await Listing.find({ category: category });
   if (!filteredListings.length) {
-    req.flash("warning", `Listings are not available for ${category} category`);
+    req.flash("warningWithLink", [
+      `Listings are not available for ${category} category`,
+      "Create listing",
+      "/listings/new",
+    ]);
     return res.redirect(`/listings`);
   }
   res.render("listings/category.ejs", { filteredListings });

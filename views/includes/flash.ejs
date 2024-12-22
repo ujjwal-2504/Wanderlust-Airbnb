@@ -37,4 +37,20 @@
     aria-label="Close"
   ></button>
 </div>
+<% } %> <% if(warningWithLink && warningWithLink.length) { %>
+<div
+  class="alert alert-warning alert-dismissible fade show col-6 offset-3 mt-3"
+  role="alert"
+>
+  <%= warningWithLink[0] %>,
+  <a style="text-decoration: none" href="<%= warningWithLink[2] %>"
+    ><%= warningWithLink[1] %></a
+  >
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
 <% } %>
