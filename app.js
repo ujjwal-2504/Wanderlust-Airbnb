@@ -50,9 +50,10 @@ app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
 });
 
-// app.get("/", (req, res) => {
-//   res.send("Hii, I am root");
-// });
+// root route
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
 
 const store = MongoStore.create({
   mongoUrl: dbUrl,

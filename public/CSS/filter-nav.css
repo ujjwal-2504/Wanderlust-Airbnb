@@ -9,7 +9,7 @@
 }
 
 /* Filters */
-#filters {
+.filters {
   display: flex;
   gap: 1.5rem;
   /* border: 2px solid; */
@@ -19,7 +19,7 @@
   align-items: center;
 }
 
-#filters a {
+.filters a {
   color: black;
 }
 

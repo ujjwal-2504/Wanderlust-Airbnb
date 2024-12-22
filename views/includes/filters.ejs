@@ -1,98 +1,155 @@
-<nav class="navbar navbar-expand-sm bg-body-light border-bottom mb-3">
+<style>
+  @media (max-width: 575px) {
+    .tax-toggle {
+      padding: 0.4rem 1.5rem 0.4rem 1rem;
+      /* transform: scale(0.8); */
+      margin: 0.5rem 0;
+      background-color: white;
+    }
+
+    .filters {
+      flex-wrap: wrap;
+      border-bottom: 2px solid #39393958;
+      gap: 1rem;
+      padding: 0.5rem 0.5rem;
+      height: min-content;
+      background-color: white;
+    }
+
+    .filter {
+      margin: 0;
+    }
+
+    .filter p {
+      margin: 0;
+      padding: 0;
+      font-size: 0.8rem;
+    }
+
+    .top-section {
+      /* border: 2px solid; */
+      padding: 0;
+      /* border-radius: 1rem; */
+      background-color: white;
+      height: fit-content;
+    }
+
+    .filter-container {
+      font-size: 0.8rem;
+    }
+
+    .filters-btn {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom mb-3">
   <div class="navbar-nav top-section">
-    <div id="filters">
-      <a href="/listings">
+    <!-- <button
+      class="btn btn-primary filters-btn"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseExample"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      Filters
+    </button> -->
+
+    <div class="filters" id="filters">
+      <a class="filter-container" href="/listings">
         <div class="filter" id="trending">
           <i class="fa-solid fa-fire"></i>
           <p>Trending</p>
         </div>
       </a>
 
-      <a href="/listings/filter/room">
+      <a class="filter-container" href="/listings/filter/room">
         <div class="filter" id="room">
           <i class="fa-solid fa-bed"></i>
           <p>Rooms</p>
         </div>
       </a>
 
-      <a href="/listings/filter/mountains">
+      <a class="filter-container" href="/listings/filter/mountains">
         <div class="filter" id="mountains">
           <i class="fa-solid fa-mountain-city"></i>
           <p>Mountains</p>
         </div>
       </a>
 
-      <a href="/listings/filter/pool">
+      <a class="filter-container" href="/listings/filter/pool">
         <div class="filter" id="pool">
           <i class="fa-solid fa-water-ladder"></i>
           <p>Amazing pools</p>
         </div>
       </a>
 
-      <a href="/listings/filter/city">
+      <a class="filter-container" href="/listings/filter/city">
         <div class="filter" id="city">
           <i class="fa-solid fa-city"></i>
           <p>Top cities</p>
         </div>
       </a>
 
-      <a href="/listings/filter/mansion">
+      <a class="filter-container" href="/listings/filter/mansion">
         <div class="filter" id="mansion">
           <i class="fa-solid fa-vihara"></i>
           <p>Mansions</p>
         </div>
       </a>
 
-      <a href="/listings/filter/cabin">
+      <a class="filter-container" href="/listings/filter/cabin">
         <div class="filter" id="cabin">
           <i class="fa-solid fa-house-flag"></i>
           <p>Cabins</p>
         </div>
       </a>
 
-      <a href="/listings/filter/treeHouse">
+      <a class="filter-container" href="/listings/filter/treeHouse">
         <div class="filter" id="treeHouse">
           <i class="fa-solid fa-building-wheat"></i>
           <p>Tree house</p>
         </div>
       </a>
 
-      <a href="/listings/filter/castle">
+      <a class="filter-container" href="/listings/filter/castle">
         <div class="filter" id="castle">
           <i class="fa-solid fa-chess-rook"></i>
           <p>Castles</p>
         </div>
       </a>
 
-      <a href="/listings/filter/camp">
+      <a class="filter-container" href="/listings/filter/camp">
         <div class="filter" id="camp">
           <i class="fa-solid fa-campground"></i>
           <p>Camping</p>
         </div>
       </a>
 
-      <a href="/listings/filter/farm">
+      <a class="filter-container" href="/listings/filter/farm">
         <div class="filter" id="farm">
           <i class="fa-solid fa-tractor"></i>
           <p>Farm</p>
         </div>
       </a>
 
-      <a href="/listings/filter/beach">
+      <a class="filter-container" href="/listings/filter/beach">
         <div class="filter" id="beach">
           <i class="fa-solid fa-umbrella-beach"></i>
           <p>Beach</p>
         </div>
       </a>
 
-      <a href="/listings/filter/arctic">
+      <a class="filter-container" href="/listings/filter/arctic">
         <div class="filter" id="arctic">
           <i class="fa-solid fa-snowman"></i>
           <p>Arctic</p>
         </div>
       </a>
 
-      <a href="/listings/filter/island">
+      <a class="filter-container" href="/listings/filter/island">
         <div class="filter" id="island">
           <i class="fa-solid fa-arrow-up-from-water-pump"></i>
           <p>Island</p>
@@ -115,3 +172,38 @@
     </div>
   </div>
 </nav>
+
+<script>
+  function manageFiltersButton() {
+    const topSection = document.querySelector(".top-section");
+    const buttonId = "filters-btn"; // Unique ID for the button
+
+    if (window.innerWidth <= 575) {
+      if (!document.getElementById(buttonId)) {
+        // Create the button element
+        const button = document.createElement("button");
+        button.id = buttonId; // Assign a unique ID
+        button.className = "btn btn-primary filters-btn";
+        button.type = "button";
+        button.setAttribute("data-bs-toggle", "collapse");
+        button.setAttribute("data-bs-target", "#filters");
+        button.setAttribute("aria-expanded", "false");
+        button.setAttribute("aria-controls", "filters");
+        button.textContent = "Filters";
+
+        // Add the button as the first child
+        topSection.insertBefore(button, topSection.firstChild);
+      }
+    } else {
+      // Remove the button if screen size is greater than 575px
+      const existingButton = document.getElementById(buttonId);
+      if (existingButton) {
+        topSection.removeChild(existingButton);
+      }
+    }
+  }
+
+  // Run the function on load and on resize
+  window.addEventListener("load", manageFiltersButton);
+  window.addEventListener("resize", manageFiltersButton);
+</script>
